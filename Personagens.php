@@ -437,18 +437,18 @@ $gang_b = get_object_vars(
     )
 );
 
-// echo $gang_b['nome_sel'];
-// print_r($gang_b['atributos']);
-// print_r($gang_b['inventario']);
-// echo $gang_k['nome_sel'];
-// print_r($gang_k['atributos']);
-// print_r($gang_k['inventario']);
-// echo $marko['nome_sel'];
-// print_r($marko['atributos']);
-// print_r($marko['inventario']);
-// echo $pietro['nome_sel'];
-// print_r($pietro['atributos']);
-// print_r($pietro['inventario']);
+echo $gang_b['nome_sel'];
+print_r($gang_b['atributos']);
+print_r($gang_b['inventario']);
+echo $gang_k['nome_sel'];
+print_r($gang_k['atributos']);
+print_r($gang_k['inventario']);
+echo $marko['nome_sel'];
+print_r($marko['atributos']);
+print_r($marko['inventario']);
+echo $pietro['nome_sel'];
+print_r($pietro['atributos']);
+print_r($pietro['inventario']);
 
 $nosaile = new Mutante(
     'nosaile',
