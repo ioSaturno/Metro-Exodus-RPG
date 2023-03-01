@@ -352,7 +352,7 @@ $pietro = get_object_vars(
             'recarregar',
             'trocar arma',
         ],
-        $precisão_pietro = get_object_vars(new PrecisãoPersonagem(15, 73, 0, -20, 0, -10, 10, 20, 0, 20, 20, 20)),
+        $precisão_pietro = get_object_vars(new PrecisãoPersonagem(15, 73, 0, -20, -10, -10, 10, 20, 0, 20, 20, 20)),
         $atributos_pietro = get_object_vars(new AtributosPersonagem(9, 11, 10, 7, 15, 9, 6, 16)),
         $vidas_pietro = get_object_vars(new Vidas(9, 10, 7, 100, 2)),
         $inventario_pietro = get_object_vars(new Inventario(['.5.45mm' => 60, '.44mm' => 40, '.12mm' => 10, '.50mm' => 12, '.7.62mm' => 25, 'flechas' => 0, 'cilindros' => 0], [$valve, $vsv, $stallion_pi], $karambits, [45, 20, 45], 5, 1, 1, 0, 3))
@@ -437,18 +437,19 @@ $gang_b = get_object_vars(
     )
 );
 
-echo $gang_b['nome_sel'];
-print_r($gang_b['atributos']);
-print_r($gang_b['inventario']);
-echo $gang_k['nome_sel'];
-print_r($gang_k['atributos']);
-print_r($gang_k['inventario']);
-echo $marko['nome_sel'];
-print_r($marko['atributos']);
-print_r($marko['inventario']);
-echo $pietro['nome_sel'];
-print_r($pietro['atributos']);
-print_r($pietro['inventario']);
+// echo $gang_b['nome_sel'];
+// print_r($gang_b['atributos']);
+// print_r($gang_b['inventario']);
+// echo $gang_k['nome_sel'];
+// print_r($gang_k['atributos']);
+// print_r($gang_k['inventario']);
+// echo $marko['nome_sel'];
+// print_r($marko['atributos']);
+// print_r($marko['inventario']);
+// echo $pietro['nome_sel'];
+// print_r($pietro['atributos']);
+// print_r($pietro['inventario']);
+// print_r($pietro);
 
 $nosaile = new Mutante(
     'nosaile',

@@ -293,7 +293,7 @@ do {
 
                                 do {
                                     $alvo_sel = strtolower(readline('Quem ele acertou? '));
-                                } while (array_key_exists($personagem_sel, $personagens) == false);
+                                } while (array_key_exists($alvo_sel, $personagens) == false);
 
                                 $alvo_vida = $personagens[$alvo_sel][0];
 
@@ -307,7 +307,8 @@ do {
 
                                 echo $parte_sel . ': ' . $partes[$parte_sel][0] . PHP_EOL;
                                 print_r(PHP_EOL . $arma['dano_extra'] . PHP_EOL . PHP_EOL);
-                                $dano_extra = -1;
+
+                                $dano_extra = 0;
 
                                 do {
                                     $dano_extra = ($parte_sel > 0) ? (readline('Quanto foi o dano extra? ')) : 0;
