@@ -242,25 +242,27 @@ do {
 
             $personagem = $personagens[$personagem_sel][0];
 
-            // print_r($personagem);
+            print_r($personagem['inventario']);
+            print_r($personagem['vidas']);
+            print_r($personagem['acoes']);
 
             // filtra a ação do personagem //
             do {
-                $acao_sel = strtolower(readline('Qual será a ação? '));
-            } while (count(filtraracao($acao_sel)) == 0);
+                $acao_sel = (readline('Qual será a ação? ' . PHP_EOL));
 
-            $acao = filtraracao($acao_sel);
-            $key_acao = array_key_first($acao);
-            $acao = $acao[$key_acao];
+            } while (array_key_exists($acao_sel, $personagem['acoes']) == false);
+
+            $acao = $personagem['acoes'][$acao_sel];
 
             // comparando a ação e tomando providências quantos a elas //
 
             if ($acao == 'atirar' || $acao == 'recarregar' || $acao == 'trocar arma') {
 
-                // selecionando as armas //
-                print_r($personagem['inventario']['armas']);
-
                 if ($personagens[$personagem_sel]['arma_sel'] == 3) {
+
+                    // selecionando as armas //
+                    print_r($personagem['inventario']['armas']);
+
                     do {
                         $arma_sel = readline('Qual arma ele está usando? ');
                     } while (is_string($arma_sel) == true && $arma_sel < 0 || $arma_sel > 2);
@@ -275,6 +277,8 @@ do {
 
                     if ($acao == 'atirar') {
                         if ($arma['recarregamento'] > 0 && $personagem['inventario']['municoes'][$arma['municao']] >= $arma['ROF']) {
+
+                            echo PHP_EOL . $personagem['nome'] . ' vai tentar acertar um tiro de ' . $arma['nome'] . '.' . PHP_EOL . PHP_EOL;
 
                             $taxas = taxadeacerto($arma['tax_cur'], $arma['tax_med'], $arma['tax_lon'], $personagem['tax_acerto'][$arma['tipo']], $arma['hab_ad']);
                             print_r($taxas);
@@ -297,13 +301,12 @@ do {
 
                                 $alvo_vida = $personagens[$alvo_sel][0];
 
-                                print_r($alvo_vida);
                                 print_r($partes);
 
                                 do {
                                     $parte_sel = (readline('Em qual parte do corpo ele acertou? ' . PHP_EOL));
 
-                                } while ($parte_sel > 6 && $parte_sel < 0 && is_string($arma_sel) == true);
+                                } while ($parte_sel > 6 && $parte_sel < 0 && array_key_exists($parte_sel, $partes));
 
                                 echo $parte_sel . ': ' . $partes[$parte_sel][0] . PHP_EOL;
                                 print_r(PHP_EOL . $arma['dano_extra'] . PHP_EOL . PHP_EOL);
@@ -315,12 +318,14 @@ do {
                                 } while ($dano_extra < 0 && is_string($dano_extra) == true);
 
                                 if ($parte_sel > 0) {
-                                    $alvo_vida['vidas']['vida'] -= $dano = Dano($arma['dano_base'], $dano_extra, $alvo_vida['inventario']['armadura'][$partes[$parte_sel][1]]);
+                                    $alvo_vida['vidas']['vida'] -= $dano = Dano($arma['dano_base'], $dano_extra, $alvo_vida['inventario']['armadura'][$parte_sel -1]);
                                     $alvo_vida['vidas'][$partes[$parte_sel][1]] -= $dano_extra;
                                     $personagens[$alvo_sel][0] = $alvo_vida;
                                 }
 
-                                if ($personagens[$alvo_sel][0]['vidas']['res_ca'] < 0 && $personagens[$alvo_sel][0]['vidas']['res_ca'] > $vidas_or[$alvo_sel]['res_ca']) {
+                                echo PHP_EOL . PHP_EOL . $personagem['nome'] . ' acertou um tiro de ' . $arma['nome'] . ' no ' . $alvo_vida['nome'] . ', exatamente na/no: ' . $partes[$parte_sel][0] . '.' . PHP_EOL . PHP_EOL;
+
+                                if ($personagens[$alvo_sel][0]['vidas']['res_ca'] < 0) {
                                     $personagens[$alvo_sel]['status'] = 'inconsciente';
                                     $personagem[$alvo_sel]['contador_status'] = 2;
                                 }
@@ -332,12 +337,12 @@ do {
                                     $personagens[$alvo_sel]['status'] = 'morto';
                                 }
 
-                                echo 'vida do alvo: ' . json_encode($alvo_vida['vidas']['vida']) . PHP_EOL;
-                                echo 'resistência da parte atingida: ' . json_encode($alvo_vida['vidas'][$partes[$parte_sel][1]]) . PHP_EOL . PHP_EOL;
+                                echo 'Vida do alvo: ' . json_encode($alvo_vida['vidas']['vida']) . PHP_EOL;
+                                echo 'Resistência da parte atingida: ' . json_encode($alvo_vida['vidas'][$partes[$parte_sel][1]]) . PHP_EOL . PHP_EOL;
                             }
 
-                            echo 'munição restante de ' . $arma['municao'] . ': ' . json_encode($personagem['inventario']['municoes'][$arma['municao']]) . PHP_EOL;
-                            echo 'rodadas até recarregar: ' . json_encode($arma['recarregamento']) . PHP_EOL;
+                            echo 'Munição restante de ' . $arma['municao'] . ': ' . json_encode($personagem['inventario']['municoes'][$arma['municao']]) . PHP_EOL;
+                            echo 'Rodadas até recarregar: ' . json_encode($arma['recarregamento']) . PHP_EOL;
                         } else {
 
                             if ($personagem['inventario']['municoes'][$arma['municao']] >= $arma['ROF']) {
@@ -369,7 +374,7 @@ do {
 
                     if ($acao == 'recarregar') {
                         $arma['recarregamento'] = $arma['capacidade'];
-                        echo 'rodadas até recarregar: ' . json_encode($arma['recarregamento']) . PHP_EOL;
+                        echo 'Rodadas até recarregar: ' . $arma['recarregamento'] . PHP_EOL;
                     }
 
                     $personagem['inventario']['armas'][$arma_sel] = $arma;
@@ -378,7 +383,7 @@ do {
                         do {
                             $arma_sel = readline('Qual arma ele está usando? ');
                         } while (is_string($arma_sel) == true && $arma_sel < 0 || $arma_sel > 2);
-    
+
                         $personagens[$personagem_sel]['arma_sel'] = $arma_sel;
                     }
                 }

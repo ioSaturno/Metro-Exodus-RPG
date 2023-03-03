@@ -305,7 +305,7 @@ $marko = get_object_vars(
         'masculino',
         'ucraniano',
         '+5 em testes de educação em relação aos eventos no Metrô',
-        5,
+        8,
         'caçador de mutantes',
         'tenente',
         'direito',
@@ -355,7 +355,7 @@ $pietro = get_object_vars(
         $precisão_pietro = get_object_vars(new PrecisãoPersonagem(15, 73, 0, -20, -10, -10, 10, 20, 0, 20, 20, 20)),
         $atributos_pietro = get_object_vars(new AtributosPersonagem(9, 11, 10, 7, 15, 9, 6, 16)),
         $vidas_pietro = get_object_vars(new Vidas(9, 10, 7, 100, 2)),
-        $inventario_pietro = get_object_vars(new Inventario(['.5.45mm' => 60, '.44mm' => 40, '.12mm' => 10, '.50mm' => 12, '.7.62mm' => 25, 'flechas' => 0, 'cilindros' => 0], [$valve, $vsv, $stallion_pi], $karambits, [45, 20, 45], 5, 1, 1, 0, 3))
+        $inventario_pietro = get_object_vars(new Inventario(['.5.45mm' => 60, '.44mm' => 40, '.12mm' => 10, '.50mm' => 12, '.7.62mm' => 25, 'flechas' => 0, 'cilindros' => 0], [$valve, $vsv, $stallion_pi], $karambits, [20, 20, 20, 20, 45, 45], 5, 1, 1, 0, 3))
     )
 );
 
@@ -381,7 +381,7 @@ $gang_k = get_object_vars(
         $precisão_gk1 = get_object_vars(new PrecisãoPersonagem(10, 45, 0, 0, 15, 15, 0, 20, 20, 20, 0, 20)),
         $atributos_gk1 = get_object_vars(new AtributosPersonagem(8, 8, 6, 5, 10, 7, 3, 15)),
         $vidas_gk1 = get_object_vars(new Vidas(8, 6, 5, 100, 2)),
-        $inventario_gk1 = get_object_vars(new Inventario(['.5.45mm' => 90, '.44mm' => 60, '.12mm' => 20], [$kalash, $revolver], $nr40, get_object_vars(new Armadura(45, 15, 25)), 2, 0, 1, 1, 0))
+        $inventario_gk1 = get_object_vars(new Inventario(['.5.45mm' => 90, '.44mm' => 60, '.12mm' => 20], [$kalash, $revolver], $nr40, get_object_vars(new Armadura(15, 15, 15, 15, 45, 25)), 2, 0, 1, 1, 0))
     )
 );
 
@@ -407,7 +407,7 @@ $gang_k2 = get_object_vars(
         $precisão_gk1 = get_object_vars(new PrecisãoPersonagem(10, 45, 0, 0, 15, 15, 0, 20, 20, 20, 0, 20)),
         $atributos_gk1 = get_object_vars(new AtributosPersonagem(8, 8, 6, 5, 10, 7, 3, 15)),
         $vidas_gk1 = get_object_vars(new Vidas(8, 6, 5, 100, 2)),
-        $inventario_gk1 = get_object_vars(new Inventario(['.5.45mm' => 90, '.44mm' => 60, '.12mm' => 20], [$kalash, $revolver], $nr40, get_object_vars(new Armadura(45, 15, 25)), 2, 0, 1, 1, 0))
+        $inventario_gk1 = get_object_vars(new Inventario(['.5.45mm' => 90, '.44mm' => 60, '.12mm' => 20], [$kalash, $revolver], $nr40, get_object_vars(new Armadura(15, 15, 15, 15, 45, 25)), 2, 0, 1, 1, 0))
     )
 );
 
